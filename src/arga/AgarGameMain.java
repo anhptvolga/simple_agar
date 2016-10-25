@@ -12,7 +12,7 @@ import java.awt.Dimension;
  *
  * @author godric
  */
-public class ArgaGameMain {
+public class AgarGameMain {
 
     /**
      * @param args the command line arguments
@@ -21,8 +21,7 @@ public class ArgaGameMain {
         // code application logic here
         // loading game
         GameLoader game = new GameLoader();
-        game.setup(new ArgaGame(), new Dimension(640, 480), false);
+        game.setup(new AgarGame(), new Dimension(640, 480), false);
         game.start();
-        
     }
 }
