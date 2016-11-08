@@ -21,7 +21,7 @@ public class AgarGameMain {
         // code application logic here
         // loading game
         GameLoader game = new GameLoader();
-        game.setup(new AgarGame(), new Dimension(640, 480), false);
+        game.setup(new AgarGame(), new Dimension(AgarGame.WIDTH_SCREEN, AgarGame.HEIGHT_SCREEN), false);
         game.start();
     }
 }
