@@ -5,6 +5,7 @@
  */
 package collision;
 
+import arga.Agar;
 import com.golden.gamedev.object.Sprite;
 import com.golden.gamedev.object.collision.BasicCollisionGroup;
 import java.awt.image.BufferedImage;
@@ -21,10 +22,9 @@ public class AgarEatArga extends BasicCollisionGroup {
         pixelPerfectCollision = true;
     }
     
-    
-    
     @Override
     public void collided(Sprite sprite, Sprite sprite1) {
+        ((Agar) sprite).eat();
         sprite1.setActive(false);
     }
     
