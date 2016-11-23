@@ -26,7 +26,7 @@ public class MouseMovement extends MovingAI {
 
     @Override
     protected double getAngle() {
-        return getAngleDir(_object.getX(), _object.getY(), 
+        return 90 + getAngleDir(_object.getX(), _object.getY(), 
                 _gameobj.getMouseX(), _gameobj.getMouseY());
     }
     

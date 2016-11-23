@@ -5,6 +5,7 @@
  */
 package AI;
 
+import arga.AgarGame;
 import com.golden.gamedev.GameObject;
 import com.golden.gamedev.object.Sprite;
 
@@ -13,11 +14,11 @@ import com.golden.gamedev.object.Sprite;
  * @author godric
  */
 public abstract class MovingAI implements StrategyAI {
-    protected GameObject _gameobj;
+    protected AgarGame _gameobj;
     protected Sprite _object;
 
     public MovingAI(GameObject game, Sprite obj) {
-        _gameobj = game;
+        _gameobj = (AgarGame) game;
         _object = obj;
     }
     
