@@ -12,9 +12,9 @@ import com.golden.gamedev.object.collision.BasicCollisionGroup;
  *
  * @author godric
  */
-public class AgarHitRock extends BasicCollisionGroup {
+public class CharacterHitRock extends BasicCollisionGroup {
 
-    public AgarHitRock() {
+    public CharacterHitRock() {
 	pixelPerfectCollision = true;
     }
     @Override
