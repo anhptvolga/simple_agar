@@ -5,37 +5,49 @@
  */
 package arga;
 import com.golden.gamedev.util.ImageUtil;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *
  * @author godric
  */
-public class Agar extends com.golden.gamedev.object.Sprite {
-    private final int GROWTH = 5;
+public class Character extends com.golden.gamedev.object.Sprite {
+    private final int GROWTH = 1;
+    private final int KILL_GR = 2;
     private int eatCount;
+    private int killed;
     
-    Agar(BufferedImage image) {
+    Character(BufferedImage image) {
         super(ImageUtil.resize(image, 40, 40));
-        
         eatCount = 0;
+        killed = 0;
     }
 
-    Agar(BufferedImage image, double x, double y) {
+    Character(BufferedImage image, double x, double y) {
         super(ImageUtil.resize(image, 40, 40),
                 x-image.getWidth()/2, y-image.getHeight()/2);
-        
         eatCount = 0;
     }
     
-    public void eat() {
+    public int getKilled() {
+        return this.killed;
+    }
+    
+    public void kill(Character dead) {
+        this.killed += dead.killed;
+        this.setImage(ImageUtil.resize(this.getImage(), 
+                this.getWidth() + (dead.killed+1)*KILL_GR, 
+                this.getHeight() + (dead.killed+1)*KILL_GR));
+    }
+    
+    public void setEated(int a) {
+        this.eatCount = a;
+        this.setImage(ImageUtil.resize(this.getImage(), 
+                this.getWidth() + a*GROWTH, this.getHeight() + a*GROWTH));
+    }
+    
+    public void eatAgar() {
         this.eatCount ++;
         this.setImage(ImageUtil.resize(this.getImage(), 
                 this.getWidth() + GROWTH, this.getHeight() + GROWTH));
@@ -47,5 +59,13 @@ public class Agar extends com.golden.gamedev.object.Sprite {
     
     public void update(long l) {
         super.update(l);
+    }
+    
+    public Point getPosition() {
+        Point position = new Point();
+        position.setLocation(
+            (int) this.getX(),
+            (int) this.getY());
+        return position;
     }
 }

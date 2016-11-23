@@ -5,14 +5,16 @@
  */
 package arga;
 
+import com.golden.gamedev.GameEngine;
 import com.golden.gamedev.GameLoader;
+import com.golden.gamedev.GameObject;
 import java.awt.Dimension;
 
 /**
  *
  * @author godric
  */
-public class AgarGameMain {
+public class AgarGameMain extends GameEngine {
 
     /**
      * @param args the command line arguments
@@ -21,7 +23,20 @@ public class AgarGameMain {
         // code application logic here
         // loading game
         GameLoader game = new GameLoader();
-        game.setup(new AgarGame(), new Dimension(AgarGame.WIDTH_SCREEN, AgarGame.HEIGHT_SCREEN), false);
+        game.setup(new AgarGameMain(), 
+                new Dimension(AgarGame.WIDTH_SCREEN, AgarGame.HEIGHT_SCREEN), 
+                false);
         game.start();
+    }
+
+    @Override
+    public GameObject getGame(int i) {
+        switch (i) {
+            case 0:
+                return new AgarGame(this);
+            case 1:
+                return new GameOver(this);
+        }
+        return null;
     }
 }
